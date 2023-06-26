@@ -65,10 +65,14 @@ public class Dijkstra {
 
         //Exibe resultado
         Console.Write("Menor caminho de {0} ate {1}: ", origem.Nome, destino.Nome);
-        foreach (var node in path) { 
-            Console.Write("{0} --> ", node.Nome); //cidades do caminho
+        foreach (var node in path) {
+            if(node!=destino){
+            Console.Write("{0} --> ", node.Nome); //dispositivos do caminho
+            }
+            else if(node==destino){
+                Console.Write("{0} ", node.Nome);
+            }
         }
-        Console.WriteLine("Custo total: ({0})", banda[destino]); //distancia total percorrida
 
         return new Tuple<int, List<Node>>(banda[destino], path); //caminho mais curto de nós(lista) retornado
     }
